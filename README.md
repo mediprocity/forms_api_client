@@ -55,6 +55,14 @@ All services follow:
 FormsAPI::<Namespace>::<Service>.new(...).call
 ```
 
+## Tests
+
+Run the lightweight Minitest suite:
+
+```bash
+ruby -I lib:test test/services_test.rb
+```
+
 ## Available services
 
 ### General
