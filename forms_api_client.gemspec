@@ -7,12 +7,13 @@ Gem::Specification.new do |spec|
   spec.email = ['a.partitskiy@gmail.com']
 
   spec.summary = 'Forms API service client'
-  spec.description = 'Shared Forms API service client for API communication.'
-  spec.homepage = 'https://mediprocity.com'
+  spec.description = 'Forms API service client for API communication.'
+  spec.homepage = 'https://github.com/mediprocity/forms_api_client'
   spec.required_ruby_version = '>= 3.2.0'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = spec.homepage
+  spec.metadata['bug_tracker_uri'] = 'https://github.com/mediprocity/forms_api_client/issues'
 
   spec.files = Dir.chdir(__dir__) { Dir['lib/**/*.rb'] + ['forms_api_client.gemspec'] }
   spec.require_paths = ['lib']
