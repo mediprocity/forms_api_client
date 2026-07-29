@@ -188,13 +188,14 @@ class ServicesTest < FormsAPIServiceTest
 
   def test_v2_organizations_forms_create
     forms = [{ id: 'fa9acaf3-9373-4e03-9e7f-d7c1e937c555', delete: false }]
+    actor_id = 'a5e26cd1-6f4e-4d4e-9a5b-3c1f4b5c8b2f'
 
     assert_service_call(
       service_class: FormsAPI::V2::Organizations::Forms::Create,
-      kwargs: { organization_id: 1, forms: },
+      kwargs: { organization_id: 1, forms:, actor_id: },
       expected_method: :post,
       expected_url: "#{BASE_URL}/api/v2/organizations/1/forms",
-      expected_payload: { organization: { forms: } },
+      expected_payload: { organization: { forms: }, actor_id: },
       response_code: 201,
       response_body: { 'forms' => [{ 'id' => 'f1', 'title' => 'Form', 'url' => 'http://example.test/forms/1' }], 'meta' => { 'count' => 1 } }
     )
@@ -221,10 +222,12 @@ class ServicesTest < FormsAPIServiceTest
       metrics_access: true,
       reports_access: true
     )
+    actor_id = 'a5e26cd1-6f4e-4d4e-9a5b-3c1f4b5c8b2f'
+    user_full_name = 'Jane Doe'
 
     assert_service_call(
       service_class: FormsAPI::V2::Organizations::Accesses::Update,
-      kwargs: { organization_id: 1, user_id: '3b3eb978-67ce-4991-b827-6ba3ef865101', params: },
+      kwargs: { organization_id: 1, user_id: '3b3eb978-67ce-4991-b827-6ba3ef865101', params:, actor_id:, user_full_name: },
       expected_method: :put,
       expected_url: "#{BASE_URL}/api/v2/organizations/1/accesses/3b3eb978-67ce-4991-b827-6ba3ef865101",
       expected_payload: {
@@ -233,6 +236,10 @@ class ServicesTest < FormsAPIServiceTest
           dashboard_access: true,
           metrics_access: true,
           reports_access: true
+        },
+        actor_id:,
+        user: {
+          full_name: user_full_name
         }
       },
       response_code: 200,

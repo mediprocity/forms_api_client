@@ -11,7 +11,7 @@ This is a library gem, so there is no server/process to run.
 ```bash
 cd forms_api_client
 gem build forms_api_client.gemspec
-gem install ./forms_api_client-0.1.0.gem
+gem install ./forms_api_client-0.1.1.gem
 ```
 
 2. Configure required environment variables:
@@ -89,9 +89,9 @@ ruby -I lib:test test/services_test.rb
 - `FormsAPI::V2::Users::Forms::List.new(user_id:, organization_ids:, query:, page:).call`
 - `FormsAPI::V2::Users::Forms::Get.new(user_id:, id:, organization_ids:).call`
 - `FormsAPI::V2::Organizations::Forms::List.new(organization_id:, query:, page:, not_assigned:).call`
-- `FormsAPI::V2::Organizations::Forms::Create.new(organization_id:, forms:).call`
+- `FormsAPI::V2::Organizations::Forms::Create.new(organization_id:, forms:, actor_id:).call`
 - `FormsAPI::V2::Organizations::Accesses::List.new(organization_id:, user_ids:).call`
-- `FormsAPI::V2::Organizations::Accesses::Update.new(organization_id:, user_id:, params:).call`
+- `FormsAPI::V2::Organizations::Accesses::Update.new(organization_id:, user_id:, params:, actor_id:, user_full_name:).call`
 
 For `Accesses::Update`, `params` should respond to:
 

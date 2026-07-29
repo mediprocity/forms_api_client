@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class FormsAPI::V2::Organizations::Forms::Create < FormsAPI::Client
-  attr_reader :organization_id, :forms
+  attr_reader :organization_id, :forms, :actor_id
 
-  def initialize(organization_id: nil, forms: nil)
+  def initialize(organization_id: nil, forms: nil, actor_id: nil)
     @organization_id = organization_id
     @forms = forms
+    @actor_id = actor_id
   end
 
   private
@@ -22,7 +23,8 @@ class FormsAPI::V2::Organizations::Forms::Create < FormsAPI::Client
     {
       organization: {
         forms:
-      }
+      },
+      actor_id:
     }
   end
 end

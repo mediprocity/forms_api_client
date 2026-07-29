@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name = 'forms_api_client'
-  spec.version = '0.1.0'
+  spec.version = '0.1.1'
   spec.authors = ['Mediprocity']
   spec.email = ['a.partitskiy@gmail.com']
 
